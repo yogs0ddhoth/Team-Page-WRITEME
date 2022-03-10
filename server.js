@@ -62,7 +62,7 @@ const teamLoop = {
 };
 
 // Main functionality:
-function init() {
+const init = () => {
   // prompt answers to generateMarkdown()
   inquirer.prompt(teamLoop).then((answers) => {
     console.log(JSON.stringify(answers)); // for debugging purposes
@@ -76,3 +76,6 @@ function init() {
 
 // Function call to initialize app
 init();
+
+// Export for testing:
+module.exports = init;
