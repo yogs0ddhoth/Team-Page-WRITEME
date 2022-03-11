@@ -9,10 +9,10 @@ const Employee = require('./lib/Employee');
 const Engineer = require('./lib/Engineer');
 const Intern = require('./lib/Intern');
 const Manager = require('./lib/Manager');
-const {Input, List, Loop} = require('./lib/Prompt');
+const {Input, List, Loop, Validate} = require('./lib/Prompt');
 // //* functions:
-const generateMockUp = require('./lib/generateMockUp');
-
+const generateHTML = require('./lib/generateHTML');
+const {generateManager, generateEngineerHTML, generateInternHTML} = require('./lib/generateTeam')
 
 const employees = [
   'Engineer',
@@ -29,7 +29,7 @@ const teamPrompts = [
   new Input('manager.office', 'Enter office number:'),
 
   //* Prompt-Loop
-  new Loop('team', 'Add team Member?', 
+  new Loop('team', 'Add Team Member?', 
   [
     new List('type', 'Select a Team member:', employees),
 
@@ -51,10 +51,13 @@ const teamPrompts = [
 const init = () => {
   // prompt answers to generateMarkdown()
   inquirer.prompt(teamPrompts).then((answers) => {
-    console.log(JSON.stringify(answers)); // for debugging purposes
-    
+    const managerSection = generateManager(answers.manager);
+    const engineerSection = generateEngineerHTML(answers.team.filter(employee => employee.type === 'Engineer'));
+    const internSection = generateInternHTML(answers.team.filter(employee => employee.type === 'Intern'));
+
+    console.log(generateHTML(managerSection, engineerSection, internSection));
     // // write the HTML from mockup 
-    // fs.writeFile('./dist/index.html', generateMockUp(answers), (err) => 
+    // fs.writeFile('./dist/index.html', generateHTML(answers), (err) => 
     //   err ? console.log(err) : console.log(`Success! Check the 'dist' directory`)
     // );
   })
