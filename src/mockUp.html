@@ -6,9 +6,24 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Team Page</title>
   <link rel="stylesheet" href="./reset.css" />
+  <link rel="stylesheet" href="./res-grid.css">
   <link rel="stylesheet" href="./style.css" />
 </head>
 <body>
-  
+  <header class="main-header">
+    <h1>Team Page</h1>
+  </header>
+
+  <main class="container">
+    <div class="card col-3 col-s-4">
+      <header class="header">
+        <h2 class="col-12">${manager.name}</h2>
+        <h3 class="col-12">Team Manager</h3>
+      </header>
+      <p>Emplyee Id: ${manager.id}</p>
+      <p>Email: <a href='mailto:${manager.email}'>${manager.email}</a></p>
+      <p>Office: ${manager.office}</p>
+    </div>
+  </main>
 </body>
 </html>
