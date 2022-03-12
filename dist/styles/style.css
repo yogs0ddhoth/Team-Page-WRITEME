@@ -30,6 +30,7 @@ body {
 }
 
 .card {
+  height: 200px;
   display: inline-block;
   margin: 1%;
   background-color: aliceblue;
@@ -40,14 +41,28 @@ body {
 .card .header {
   background-color: dodgerblue;
   color: aliceblue;
-
 }
+
+.card h2 {
+  font-size: 1.5;
+}
+
 .card h3 {
-  font-size: .85rem;
+  font-size: 1rem;
 }
 
 .card p {
-  font-size: .75rem;
+  font-size: 1rem;
+  padding: .5rem;
+}
+
+a {
+  color: blue;
+  text-decoration: underline;
+}
+
+a:hover {
+  cursor: pointer;
 }
 
 main {
